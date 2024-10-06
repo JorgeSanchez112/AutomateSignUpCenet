@@ -1,6 +1,7 @@
 target/
 !**/src/main/**/target/
 !**/src/test/**/target/
+reports/
 
 .idea/modules.xml
 .idea/jarRepositories.xml

@@ -41,13 +41,13 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extentreport.version}</version>
+            <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 

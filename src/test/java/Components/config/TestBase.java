@@ -20,7 +20,10 @@ public class TestBase {
     protected WebDriver driver;
     protected HeaderMenuComponent headerMenu;
     protected RegisterPage registerPage;
-    protected SuccessRegisterPage successRegisterPage;
+
+    public WebDriver getDriver(){
+        return driver;
+    }
 
     @BeforeMethod
     public void setUp() {
