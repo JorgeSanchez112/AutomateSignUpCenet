@@ -25,7 +25,8 @@ It utilizes Selenium WebDriver for web automation and TestNG as the testing fram
     │       │   ├── Components/
     │       │   │    ├── config/
     │       │   │    │   ├── PageBase.java
-    │       │   │    │   └── TestBase.java       
+    │       │   │    │   └── TestBase.java     
+    │       │   │    │
     │       │   │    └── utilities/
     │       │   │        └── report/
     │       │   │              ├── ExtentReporterNG
