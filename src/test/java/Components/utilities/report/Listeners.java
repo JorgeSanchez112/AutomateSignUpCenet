@@ -18,9 +18,9 @@ import org.testng.ITestResult;
 import java.io.IOException;
 
 public class Listeners extends TestBase implements ITestListener {
-    ExtentTest test;
-    ExtentReports extent = ExtentReporterNG.getReportObject();
-    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+    private ExtentTest test;
+    private final ExtentReports extent = ExtentReporterNG.getReportObject();
+    private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
     public String takeScreenshot(WebDriver driver) throws IOException {
         try {
@@ -73,6 +73,7 @@ public class Listeners extends TestBase implements ITestListener {
         test.info("Test failed but it is in defined success ratio");
     }
 
+
     @Override
     public void onStart(ITestContext context) {
         Log.builder().details("I am in onStart method " + test);
@@ -83,4 +84,7 @@ public class Listeners extends TestBase implements ITestListener {
         extent.flush();
     }
 
+    public static ExtentTest getExtentTest() {
+        return extentTest.get();
+    }
 }

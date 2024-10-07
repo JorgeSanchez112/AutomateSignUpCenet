@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class HeaderMenuComponent extends PageBase {
-    @FindBy(css = ".list-inline >* .hidden-md")
-    List<WebElement> HeaderMenuElements;
-    @FindBy(css = ".dropdown-menu >* a")
-    List<WebElement> AccountElements;
+    @FindBy(css = ".list-inline > li >  a")
+    List<WebElement> headerMenuElements;
+    @FindBy(css = ".dropdown-menu-right >* a")
+    List<WebElement> accountElements;
 
     public HeaderMenuComponent(WebDriver driver) {
         super(driver);
@@ -20,11 +20,18 @@ public class HeaderMenuComponent extends PageBase {
     }
 
     public void ClickOnMyAccountElement() {
-        clickOnAnElement(HeaderMenuElements.get(1));
+        try {
+            waitForVisibility(headerMenuElements.get(1));
+            clickOnAnElementWithWait(headerMenuElements.get(1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public RegisterPage ClickOnRegisterDropDown() {
-        clickOnAnElement(AccountElements.get(0));
+        waitForVisibility(accountElements.get(0));
+        clickOnAnElementWithWait(accountElements.get(0));
         return new RegisterPage(driver);
     }
 

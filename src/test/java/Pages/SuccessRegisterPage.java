@@ -17,7 +17,8 @@ public class SuccessRegisterPage extends PageBase {
     }
 
     public boolean isSuccessRegisterMessageVisible() {
-        return successRegisterMessage.isDisplayed();
+        waitForVisibility(successRegisterMessage);
+        return isElementPresent(successRegisterMessage);
     }
 
 }

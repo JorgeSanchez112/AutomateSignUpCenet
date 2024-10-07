@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SignUp Page">
+    <listeners>
+        <listener class-name="Components.utilities.report.Listeners"/>
+    </listeners>
+
+    <test name = "Happy testing">
+        <parameter name="firstName" value="Pepe"/>
+        <parameter name="lastName" value="Perez"/>
+        <parameter name="email" value="P3p3P3r3z@test1.com"/>
+        <parameter name="telephone" value="12345678"/>
+        <parameter name="password" value="Password"/>
+
+        <groups>
+            <run>
+                <include name="happy test"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name = "Tests.RegisterTest" />
+        </classes>
+    </test>
+
+    <test name="Negative testing">
+        <parameter name="firstName" value="commom name"/>
+        <parameter name="lastName" value="commom last name"/>
+        <parameter name="emailWithBadFormat" value="wrongformatEmail"/>
+        <parameter name="telephone" value="1234567891"/>
+        <parameter name="password" value="Password"/>
+        <parameter name="incorrectPassword" value="password"/>
+        <parameter name="shortPassword" value="a12"/>
+        <parameter name="longPassword" value="12345678901234567890"/>
+
+        <groups>
+            <run>
+                <include name="negative test"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="Tests.RegisterTest"/>
+        </classes>
+    </test>
+</suite>

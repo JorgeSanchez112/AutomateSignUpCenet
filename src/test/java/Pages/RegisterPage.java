@@ -21,88 +21,71 @@ public class RegisterPage extends PageBase {
     private WebElement passwordField;
     @FindBy(id = "input-confirm")
     private WebElement passwordConfirmField;
-    @FindBy(xpath = "//label[contains(text(), 'Subscribe')]")
-    private WebElement subscribeLabel;
-    @FindBy(className = "radio-inline")
-    private List<WebElement> subscribeRadioButtons;
     @FindBy(name = "agree")
     private WebElement privacyPolicyCheckButton;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement continueButton;
+    @FindBy(className = "text-danger")
+    private List<WebElement> textDangerFields;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void scrollToFirstNameField(){
-        scrollToElement(firstNameField);
+    public void fillFirstNameField(String firstName) {
+        fillField(firstNameField, firstName);
     }
 
-    public void scrollToLastNameField(){
-        scrollToElement(lastNameField);
+    public void fillLastNameField(String lastName) {
+        fillField(lastNameField, lastName);
     }
 
-    public void scrollToEmailField(){
-        scrollToElement(emailField);
+    public void fillEmailField(String email) {
+        fillField(emailField, email);
     }
 
-    public void scrollToTelephoneField(){
-        scrollToElement(telephoneField);
+    public void fillTelephoneField(String telephone) {
+        fillField(telephoneField, telephone);
     }
 
-    public void scrollToPasswordField(){
-        scrollToElement(passwordField);
+    public void fillPasswordField(String password) {
+        fillField(passwordField, password);
     }
 
-    public void scrollToConfirmPasswordField(){
-        scrollToElement(passwordConfirmField);
-    }
-
-    public void scrollToSubscribeLabel(){
-        scrollToElement(subscribeLabel);
+    public void fillPasswordConfirmField(String passwordConfirm) {
+        fillField(passwordConfirmField, passwordConfirm);
     }
 
     public void scrollToContinueButton(){
         scrollToElement(continueButton);
     }
 
-    public void typeInFirstNameField(String firstName){
-        typeInElement(firstNameField, firstName);
-    }
-
-    public void typeInLastNameField(String lastName){
-        typeInElement(lastNameField, lastName);
-    }
-
-    public void typeInEmailField(String email){
-        typeInElement(emailField, email);
-    }
-
-    public void typeInTelephoneField(String telephone){
-        typeInElement(telephoneField, telephone);
-    }
-
-    public void typeInPasswordField(String password){
-        typeInElement(passwordField, password);
-    }
-
-    public void typeInConfirmPasswordField(String password){
-        typeInElement(passwordConfirmField, password);
-    }
-
-    public void clickOnYesInSubscribeRadioButton(){
-        clickOnAnElement(subscribeRadioButtons.get(0));
-    }
-
     public void clickOnPrivacyPolicyCheckButton(){
-        clickOnAnElement(privacyPolicyCheckButton);
+        clickOnAnElementWithWait(privacyPolicyCheckButton);
+    }
+
+    public boolean areMessageOfMandatoryFieldsVisible(){
+        return areElementsPresent(textDangerFields);
+    }
+
+    public boolean isMessageMismatchPasswordVisible(){
+        waitForVisibility(textDangerFields.get(4));
+        return isElementPresent(textDangerFields.get(4));
+    }
+
+    public boolean isMessageWrongPasswordFormatVisible(){
+        try {
+            waitForVisibility(textDangerFields.get(4));
+            return isElementPresent(textDangerFields.get(4));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public SuccessRegisterPage clickOnContinueButton(){
-        clickOnAnElement(continueButton);
+        clickOnAnElementWithWait(continueButton);
         return new SuccessRegisterPage(driver);
     }
-
-
 }
