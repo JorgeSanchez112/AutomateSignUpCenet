@@ -21,27 +21,30 @@ It utilizes Selenium WebDriver for web automation and TestNG as the testing fram
     │   │
     │   │
     │   └── test/
-    │       └── java/
-    │           ├── Components/
-    │           │    ├── config/
-    │           │    │   ├── PageBase.java
-    │           │    │   └── TestBase.java       
-    │           │    └── utilities/
-    │           │        └── report/
-    │           │              ├── ExtentReporterNG
-    │           │              └── Listeners
-    │           │    
-    │           ├── Pages/        
-    │           │    ├── HeaderMenuComponent.java
-    │           │    ├── RegisterPage.java
-    │           │    └── SuccessRegisterPage.java
-    │           │
-    │           ├── Tests/
-    │           │    └── RegisterTest.java
-    │           │
-    │           └── TestSuites 
-    │                 └── Register.xml
-    │           
+    │       ├── java/
+    │       │   ├── Components/
+    │       │   │    ├── config/
+    │       │   │    │   ├── PageBase.java
+    │       │   │    │   └── TestBase.java       
+    │       │   │    └── utilities/
+    │       │   │        └── report/
+    │       │   │              ├── ExtentReporterNG
+    │       │   │              └── Listeners
+    │       │   │    
+    │       │   ├── Pages/        
+    │       │   │    ├── HeaderMenuComponent.java
+    │       │   │    ├── RegisterPage.java
+    │       │   │    └── SuccessRegisterPage.java
+    │       │   │
+    │       │   ├── Tests/
+    │       │   │    └── RegisterTest.java
+    │       │   │
+    │       │   └── TestSuites 
+    │       │         └── Register.xml
+    │       │
+    │       └── resources
+    │           └── config.properties
+    │
     ├── pom.xml                # Maven project configuration
     └── README.md              
 
@@ -57,11 +60,13 @@ It utilizes Selenium WebDriver for web automation and TestNG as the testing fram
        git clone: https://github.com/JorgeSanchez112/AutomateSignUpCenet.git
 4. Run tests using Maven:
 >[!NOTE]
->First clean the project dependencies contain in POM, You can do it using the next command.
+> You can do the next steps with the terminal.
+ 
+    First clean the project dependencies contain in POM, You can do it using the next command.
 
-       mvn clean
+    mvn clean
 
-   <sub> Run all Register Test </sub>
+   <sub> Run all Register Tests </sub>
         
     mvn test -P=RegisterTests
 
